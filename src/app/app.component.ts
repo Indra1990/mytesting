@@ -1,36 +1,38 @@
 import { Component } from '@angular/core';
 
- 
-export class Hero {
+export class Array {
   id: number;
   name: string;
 }
- 
-const HEROES: Hero[] = [
-  { id: 1, name: 'Wortel' },
-  { id: 2, name: 'Bayam' },
-  { id: 3, name: 'Buncis' },
-  { id: 4, name: 'Kacang Panjang' },
-  
+
+const SAYUR : Array[] = [
+  { id: 1, name: 'Buncis' },
+  { id: 2, name: 'Kacang Panjang' },
+  { id: 3, name: 'Wortel' },
+  { id: 4, name: 'Bayam' },
+  { id: 5, name: 'Sawi' },
+
+
 ];
- 
+
 @Component({
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
     <ul class="heroes">
-      <li *ngFor="let hero of heroes"
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <li *ngFor="let sayur of sayur"
+        [class.selected]="sayur === selectedSayur"
+        (click)="onSelect(sayur)">
+        <span class="badge">{{sayur.id}}</span> {{sayur.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
+    
+    <div *ngIf="selectedSayur">
+      <h2>Sayur  {{selectedSayur.name}} </h2>
+      <div><label>id: </label>{{selectedSayur.id}}</div>
       <div>
         <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+        <input [(ngModel)]="selectedSayur.name" placeholder="name"/>
       </div>
     </div>
   `,
@@ -84,12 +86,13 @@ const HEROES: Hero[] = [
     }
   `]
 })
+
 export class AppComponent {
   title = 'Nama Sayuran';
-  heroes = HEROES;
-  selectedHero: Hero;
- 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  sayur  = SAYUR;
+  selectedSayur: Array;
+
+  onSelect(sayur: Array): void {
+    this.selectedSayur = sayur;
   }
 }
